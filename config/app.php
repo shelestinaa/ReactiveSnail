@@ -163,6 +163,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * SleepingOwl Service Provider
+         */
+        SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
+
+        /*
          * Package Service Providers...
          */
 
