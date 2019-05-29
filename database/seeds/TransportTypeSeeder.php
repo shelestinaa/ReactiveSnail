@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 class TransportTypeSeeder extends Seeder
 {
-    private $transportTypes = ['Human-powered', 'Animal-powered', 'Air', 'Rail'];
+    private $transportTypes = ['Грузовик', 'Легковой', 'Фургон'];
 
     /**
      * Run the database seeds.

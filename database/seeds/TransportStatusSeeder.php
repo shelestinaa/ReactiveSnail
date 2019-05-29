@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 class TransportStatusSeeder extends Seeder
 {
-    private $transportStatus = ['Fine', 'Crushed', 'On Repair', 'Sold'];
+    private $transportStatus = ['Активен', 'На ремонте', 'Продан', 'Не используется'];
 
     /**
      * Run the database seeds.
