@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('drivers.layout')
 
 @section('content')
     <style>
@@ -8,7 +8,7 @@
     </style>
     <div class="card uper">
         <div class="card-header">
-            Add Share
+            Добавить водилу
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -18,19 +18,19 @@
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
-                </div><br />
+                </div><br/>
             @endif
-            <form method="post" action="{{ route('drivers.store') }}">
-                <div class="form-group">
-                    @csrf
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" name="name"/>
-                </div>
-                <div class="form-group">
-                    <label for="price">BirthDate :</label>
-                    <input type="date" class="form-control" name="birth_date"/>
-                </div>
-                <button type="submit" class="btn btn-primary">Add</button>
+            <form method="post" action="{{ route('driverr.store') }}">
+            <div class="form-group">
+            @csrf
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" name="name"/>
+            </div>
+            <div class="form-group">
+            <label for="price">BirthDate :</label>
+            <input type="date" class="form-control" name="birth_date"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
             </form>
         </div>
     </div>

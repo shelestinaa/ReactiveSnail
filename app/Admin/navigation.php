@@ -34,6 +34,12 @@ return [
         'url'   => route('admin.information'),
     ],
 
+    [
+        'title' => 'HandMade CRUD',
+        'icon'  => 'fa fa-trash',
+        'url'   => route('handMadeCrud')
+    ]
+
     // Examples
     // [
     //    'title' => 'Content',

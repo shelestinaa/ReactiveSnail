@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('transports.layout')
 
 @section('content')
     <style>
@@ -8,7 +8,7 @@
     </style>
     <div class="card uper">
         <div class="card-header">
-            Add Share
+            Добавить транспорт
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -18,23 +18,19 @@
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
-                </div><br />
+                </div><br/>
             @endif
-            <form method="post" action="{{ route('shares.store') }}">
+            <form method="post" action="{{ route('transportt.store') }}">
                 <div class="form-group">
                     @csrf
-                    <label for="name">Share Name:</label>
-                    <input type="text" class="form-control" name="share_name"/>
+                    <label for="name">Марка:</label>
+                    <input type="text" class="form-control" name="brand"/>
                 </div>
                 <div class="form-group">
-                    <label for="price">Share Price :</label>
-                    <input type="text" class="form-control" name="share_price"/>
+                    <label for="mileage">Пробег :</label>
+                    <input type="number" class="form-control" name="mileage"/>
                 </div>
-                <div class="form-group">
-                    <label for="quantity">Share Quantity:</label>
-                    <input type="text" class="form-control" name="share_qty"/>
-                </div>
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary">Добавить</button>
             </form>
         </div>
     </div>

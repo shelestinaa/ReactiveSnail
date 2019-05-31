@@ -16,3 +16,22 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/transport/all', function () {
+    $transports = [];
+
+    foreach (\App\Transport::all() as $transport) {
+
+        $transports[] = [
+            'brand'  => $transport->brand,
+            'status' => $transport->status,
+            'type'   => $transport->type,
+            'driver' => [
+                'name'       => $transport->driver->name,
+                'birth_date' => $transport->driver->birthDate
+            ]
+        ];
+    }
+
+    return Response::json($transports);
+});
