@@ -51,7 +51,9 @@ class DriverController extends Controller
 
         $driver->save();
 
-        return route('driverr.index', 'success', 'Водитель успешно добавлен');
+        return redirect()
+            ->route('driverr.index')
+            ->with('success', 'Водитель добавлен');
     }
 
     /**

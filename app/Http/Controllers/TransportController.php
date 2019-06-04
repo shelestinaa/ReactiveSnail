@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Driver;
 use App\Transport;
+use App\TransportStatus;
+use App\TransportType;
 use Illuminate\Http\Request;
 
 class TransportController extends Controller
@@ -27,7 +30,17 @@ class TransportController extends Controller
      */
     public function create()
     {
-        return view('transports.create');
+        $drivers = Driver::all();
+        $statuses = TransportStatus::all();
+        $types = TransportType::all();
+
+        //dd($drivers);
+
+        return view('transports.create', [
+            'drivers'  => $drivers,
+            'statuses' => $statuses,
+            'types'    => $types
+        ]);
     }
 
     /**
@@ -40,16 +53,24 @@ class TransportController extends Controller
     {
         $request->validate([
             'brand'   => 'required',
-            'mileage' => 'required|date',
+            'mileage' => 'required|int',
+            'driver_id' => 'required|int',
+            'status_id' => 'required|int',
+            'type_id' => 'required|int',
         ]);
         $transport = new Transport([
             'brand'   => $request->get('brand'),
             'mileage' => $request->get('mileage'),
+            'driver_id' => $request->get('driver_id'),
+            'status_id' => $request->get('status_id'),
+            'type_id' => $request->get('type_id'),
         ]);
 
         $transport->save();
 
-        return redirect('/transports', 'success', 'Автомобиль успешно добавлен');
+        return redirect()
+            ->route('transportt.index')
+            ->with('success', 'Транспорт добавлен');
     }
 
     /**
@@ -72,8 +93,19 @@ class TransportController extends Controller
     public function edit($id)
     {
         $transport = Transport::find($id);
+        $drivers = Driver::all();
+        $statuses = TransportStatus::all();
+        $types = TransportType::all();
 
-        return view('/transports/edit', compact('transport'));
+        //dd($drivers);
+
+        return view('transports.edit', [
+            'transport'=>$transport,
+            'drivers'  => $drivers,
+            'statuses' => $statuses,
+            'types'    => $types
+        ]);
+
     }
 
     /**

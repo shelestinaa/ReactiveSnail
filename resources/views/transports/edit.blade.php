@@ -34,15 +34,15 @@
                 <div class="form-group">
                     <label for="driver_id">Водитель:</label>
                     <select class="form-control" name="driver_id">
-                        @foreach (App\Driver::all() as $driver)
-                            <option value="{{$driver->id}}">{{$driver->name}}</option>
+                        @foreach ($drivers as $driver)
+                            <option value="{{$driver->id}}">{{$driver->id}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="type_id">Тип:</label>
                     <select class="form-control" name="type_id">
-                        @foreach (App\TransportType::all() as $type)
+                        @foreach ($types as $type)
                             <option value="{{$type->id}}">{{$type->name}}</option>
                         @endforeach
                     </select>
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <label for="status_id">Статус:</label>
                     <select class="form-control" name="status_id">
-                        @foreach (App\TransportStatus::all() as $status)
+                        @foreach ($statuses as $status)
                             <option value="{{$status->id}}">{{$status->name}}</option>
                         @endforeach
                     </select>
