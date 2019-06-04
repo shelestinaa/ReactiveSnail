@@ -1,12 +1,6 @@
 @extends('transports.layout')
 @section('content')
     <div class="container">
-    <style>
-        .uper {
-            margin-top: 40px;
-        }
-    </style>
-    <div class="uper">
         @if(session()->get('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -46,7 +40,6 @@
             @endforeach
             </tbody>
         </table>
-    </div>
     </div>
 
 @endsection

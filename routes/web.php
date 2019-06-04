@@ -17,7 +17,51 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('driverr', 'DriverController');
-Route::resource('transportt', 'TransportController');
+Route::middleware('auth')->get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->resource('driverr', 'DriverController');
+Route::middleware('auth')->resource('transportt', 'TransportController');
 
+
+Route::middleware('auth')->get('/api/transport', function () {
+    $transports = [];
+
+    foreach (\App\Transport::all() as $transport) {
+        $transports[] = [
+            'id'     => $transport->id,
+            'brand'  => $transport->brand,
+            'status'  => $transport->status ? $transport->status->name : 'none',
+            'type'    => $transport->type ? $transport->status->type : 'none',
+        ];
+    }
+
+    return Response::json([
+        'success'  => true,
+        'response' => $transports
+    ]);
+});
+
+Route::middleware('auth')->get('/api/transport/{id}', function (int $id) {
+    $transport = \App\Transport::find($id);
+
+    if (!$transport) {
+        return Response::json([
+            'success' => false,
+            'error'   => [
+                'code'    => 1,
+                'message' => 'Транспорт не найден'
+            ]
+        ], 404);
+    }
+
+    return Response::json([
+        'success'  => true,
+        'response' => [
+            'id'      => $transport->id,
+            'brand'   => $transport->brand,
+            'status'  => $transport->status ? $transport->status->name : 'none',
+            'type'    => $transport->type ? $transport->type->name : 'none',
+            'mileage' => $transport->mileage,
+            'driver'  => $transport->driver
+        ]
+    ]);
+});
