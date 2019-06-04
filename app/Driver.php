@@ -7,6 +7,9 @@ use \App\Transport;
 
 class Driver extends Model
 {
+    protected $fillable = [
+        'name', 'birth_date'
+    ];
 //    /**
 //     * @var int $id ID
 //     */

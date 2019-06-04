@@ -8,7 +8,7 @@
     </style>
     <div class="card uper">
         <div class="card-header">
-            Добавить водилу
+            Добавить водителя
         </div>
         <div class="card-body">
             @if ($errors->any())

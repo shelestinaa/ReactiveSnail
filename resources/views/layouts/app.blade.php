@@ -50,6 +50,19 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Menu <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('driverr.index')}}">Водители</a>
+                                    <a class="dropdown-item" href="{{route('transportt.index')}}">Автомобили</a>
+                                    <a class="dropdown-item" href="{{url('/dashboard')}}">SleepingOwl админка и круды</a>
+                                </div>
+                            </li>
+                            @yield('customNav')
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -75,6 +88,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <style>
+            .uper {
+                margin-top: 40px;
+            }
+        </style>
     </div>
 </body>
 </html>
