@@ -30,7 +30,7 @@ Route::middleware('auth')->get('/api/transport', function () {
             'id'     => $transport->id,
             'brand'  => $transport->brand,
             'status'  => $transport->status ? $transport->status->name : 'none',
-            'type'    => $transport->type ? $transport->status->type : 'none',
+            'type'    => $transport->type ? $transport->type->name : 'none',
         ];
     }
 

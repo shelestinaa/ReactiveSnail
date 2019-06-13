@@ -20,7 +20,11 @@
                     <div class="form-group">
                         @csrf
                         <label for="name">Марка:</label>
-                        <input type="text" class="form-control" name="brand"/>
+                        <select class="form-control" name="brand">
+                            @foreach ($transports as $transport)
+                                <option value="{{$transport->id}}">{{$transport->brand}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="mileage">Пробег :</label>

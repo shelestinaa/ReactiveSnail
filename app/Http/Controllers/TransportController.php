@@ -31,6 +31,7 @@ class TransportController extends Controller
     public function create()
     {
         $drivers = Driver::all();
+        $transports = Transport::all();
         $statuses = TransportStatus::all();
         $types = TransportType::all();
 
@@ -38,6 +39,7 @@ class TransportController extends Controller
 
         return view('transports.create', [
             'drivers'  => $drivers,
+            'transports'=>$transports,
             'statuses' => $statuses,
             'types'    => $types
         ]);
